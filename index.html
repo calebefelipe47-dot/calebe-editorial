@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Calebe Editorial — revisão, capa, diagramação e publicação de livros.">
+<title>Calebe Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: gráfica de livro — marcas de corte, especificações técnicas em mono, o livro aberto como peça central */
+:root{
+  /* identidade única: azul bem escuro com detalhes dourados */
+  --bg:#020714; --surface:#06102B; --ink:#F4F1EA; --muted:#B4BCD0; --line:#16224A; --gold:#F4D47C;
+  --accent:#F0C75E; --accent-soft:#FFE7A8; --accent-ink:#020714; --stage:#01040C; --paper:#FFFFFF; --paper-ink:#1C1C1C;
+  --f-display:"Bodoni Moda", "Didot", Georgia, serif;
+  --f-body:"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --f-book:"Crimson Pro", Georgia, "Times New Roman", serif;
+  --w:1180px;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:var(--w);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.08;text-wrap:balance;margin:0;color:var(--gold)}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.spec{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* Header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font-family:var(--f-display);font-size:22px;text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.logo b{font-weight:700;color:var(--ink)}.logo span{font-family:var(--f-mono);font-size:11px;letter-spacing:.22em;margin-left:6px;color:var(--accent)}
+nav.links{display:flex;gap:28px;font-size:15px}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--f-body);padding:13px 20px;border-radius:999px;text-decoration:none;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{background:var(--accent-soft)}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.btn.sm{padding:10px 16px;font-size:14px}
+@media (max-width:820px){nav.links{display:none}}
+
+/* Hero */
+.hero{padding-block:clamp(56px,8vw,104px)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,5vw,72px);align-items:end}
+.cropbox{position:relative;padding:clamp(20px,3vw,36px)}
+.cropbox::before,.cropbox::after,.cropbox>.c3,.cropbox>.c4{content:"";position:absolute;width:22px;height:22px;border-color:var(--accent);border-style:solid;opacity:.7}
+.cropbox::before{top:0;left:0;border-width:1px 0 0 1px}
+.cropbox::after{top:0;right:0;border-width:1px 1px 0 0}
+.cropbox>.c3{bottom:0;left:0;border-width:0 0 1px 1px}
+.cropbox>.c4{bottom:0;right:0;border-width:0 1px 1px 0}
+.intro-h{font-size:clamp(34px,4.8vw,60px);letter-spacing:-.01em;margin-top:14px}
+.hero .lead{margin-top:24px;font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:34em}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-side{display:grid;gap:22px;border-left:1px solid var(--line);padding-left:clamp(20px,3vw,36px)}
+.stat .n{font-family:var(--f-display);font-size:56px;line-height:1;color:var(--accent)}
+.stat .l{color:var(--muted);font-size:15px}
+.quote{font-family:var(--f-display);font-style:italic;font-size:21px;line-height:1.35}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px;grid-template-columns:auto 1fr;align-items:center}}
+@media (max-width:480px){.hero-side{grid-template-columns:1fr}}
+
+
+/* Hero com o título desenhado em traço dourado */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.drawhero{position:relative;min-height:min(86vh,760px);display:grid;place-items:center;padding-block:72px 96px;border-bottom:1px solid var(--line);
+  background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(38,72,170,.28),transparent 70%),var(--bg)}
+.drawhero-in{display:grid;justify-items:center;text-align:center;gap:clamp(14px,2.4vw,28px);width:100%}
+.dh-svg{width:min(100%,1040px);height:auto;overflow:visible}
+.dh-line{font-family:var(--f-display);font-size:118px;font-weight:500;letter-spacing:-.01em;fill:url(#dhGold);stroke:url(#dhGold);stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round}
+.dh-it{font-style:italic}
+.dh-mob{display:none}
+@media (max-width:640px){.dh-desk{display:none}.dh-mob{display:block}.drawhero{min-height:min(78vh,640px)}}
+
+.dh-sub{font-family:var(--f-mono);font-size:clamp(11px,1.3vw,13px);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.dh-scroll{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:grid;justify-items:center;gap:8px;text-decoration:none;color:var(--muted);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase}
+.dh-scroll i{display:block;width:1px;height:34px;background:linear-gradient(var(--accent),transparent);transform-origin:top;animation:dhcue 1.8s ease-in-out infinite}
+@keyframes dhcue{0%,100%{transform:scaleY(1);opacity:.7}50%{transform:scaleY(.55);opacity:.25}}
+/* animação: só quando o JS liga .is-drawing */
+.drawhero.is-drawing .dh-line{stroke-dasharray:var(--L,900);animation:dhloop 8s cubic-bezier(.45,.05,.3,1) infinite both}
+.drawhero.is-drawing .dh-it{animation-delay:.35s}
+.drawhero.is-drawing .dh-l3{animation-delay:.7s}
+.drawhero.is-drawing .dh-fade{opacity:0;animation:dhfade .9s ease forwards}
+.drawhero.is-drawing .dh-sub{animation-delay:2.6s}
+.drawhero.is-drawing .dh-scroll{animation-delay:3.2s}
+/* ciclo: desenha o traço → preenche de dourado → segura → apaga e recomeça */
+@keyframes dhloop{
+  0%{stroke-dashoffset:var(--L,900);fill-opacity:0;stroke-opacity:1;stroke-width:1.6}
+  42%{stroke-dashoffset:0;fill-opacity:0;stroke-opacity:1;stroke-width:1.6}
+  56%{stroke-dashoffset:0;fill-opacity:1;stroke-width:.4}
+  84%{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:1;stroke-width:.4}
+  94%{stroke-dashoffset:0;fill-opacity:0;stroke-opacity:0}
+  100%{stroke-dashoffset:var(--L,900);fill-opacity:0;stroke-opacity:0}
+}
+@keyframes dhfade{to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.drawhero.is-drawing .dh-line,.drawhero.is-drawing .dh-fade{animation:none;fill-opacity:1;opacity:1;stroke-dasharray:none}.dh-scroll i{animation:none}}
+
+/* Minimal */
+.band{padding-block:clamp(36px,5vw,56px);border-bottom:1px solid var(--line)}
+.band-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.band .stat{display:flex;align-items:baseline;gap:14px}
+.band .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.sec-head.solo{display:block}
+.sec-head.solo h2{margin-top:10px}
+.svc p,.step p{color:var(--muted)}
+.contact-min{display:grid;justify-items:center;text-align:center;gap:18px}
+.contact-min h2{font-size:clamp(36px,5.4vw,68px)}
+.contact-min h2 em{color:var(--accent-soft)}
+.contact-min .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px}
+.about h2{margin-bottom:8px}
+
+/* Spotlight dourado nas bordas (segue o cursor) */
+.glow:not(.navbtn){position:relative}
+.glow::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;z-index:2;
+  background:radial-gradient(var(--gs,170px) circle at var(--gx,-999px) var(--gy,-999px),rgba(255,226,140,1),rgba(240,199,94,.55) 35%,transparent 70%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  opacity:var(--go,0);transition:opacity .25s}
+.glow::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
+  background:radial-gradient(calc(var(--gs,170px)*1.1) circle at var(--gx,-999px) var(--gy,-999px),rgba(240,199,94,.10),transparent 70%);
+  opacity:var(--go,0);transition:opacity .25s}
+.viewer.glow,.portrait.glow{--gs:320px}
+.btn.glow{isolation:isolate}
+@media (hover:none){.glow::before,.glow::after{display:none}}
+
+/* Planos */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,32px);border:1px solid var(--line);border-radius:14px;background:var(--surface);min-width:0}
+.plan-hi{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 18px 40px rgba(0,0,0,.45)}
+.plan .tag{position:absolute;top:-11px;left:clamp(22px,2.6vw,32px);font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:4px 10px}
+.price{font-family:var(--f-display);font-size:clamp(40px,4.4vw,54px);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.price span{font-family:var(--f-body);font-size:16px;color:var(--muted);margin-right:6px;vertical-align:.9em}
+.lim{color:var(--muted);font-size:14px;margin-top:-6px}
+.plus{font-size:14px;font-weight:600;color:var(--ink);border-top:1px solid var(--line);padding-top:14px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;align-content:start;gap:9px;font-size:15px;color:var(--ink);flex:1}
+.plan:not(:has(.plus)) ul{border-top:1px solid var(--line);padding-top:14px}
+.plan li{display:grid;grid-template-columns:18px 1fr;gap:8px;align-items:start}
+.plan li::before{content:"";width:14px;height:14px;margin-top:4px;border-radius:50%;background:var(--accent);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8'/%3E%3C/svg%3E");
+  box-shadow:inset 0 0 0 20px var(--accent)}
+.plan li::before{background:none;border:1.5px solid var(--accent);border-radius:50%;width:12px;height:12px;box-shadow:inset 0 0 0 2.5px var(--surface),inset 0 0 0 10px var(--accent);-webkit-mask:none}
+.plan .btn{justify-content:center;margin-top:6px}
+.plans-note{margin-top:18px;color:var(--muted);font-size:14px;text-align:center}
+@media (max-width:860px){.plans{grid-template-columns:1fr;max-width:460px;margin-inline:auto}.plan-hi{order:-1}}
+
+section{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;align-items:end;margin-bottom:clamp(32px,4vw,56px)}
+.sec-head h2{font-size:clamp(34px,4.6vw,56px);margin-top:10px}
+.sec-head p{color:var(--muted);max-width:34em}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+
+/* Portfólio */
+#portfolio{background:var(--surface);border-block:1px solid var(--line)}
+
+/* Carrossel de capas */
+.shelf{position:relative;overflow:hidden;margin:0 calc(-1*clamp(16px,4vw,40px)) 28px;padding-block:10px 4px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.shelf.dragging{cursor:grabbing}
+.shelf-track{display:flex;gap:clamp(16px,2.4vw,28px);width:max-content;will-change:transform}
+.book-tab{flex:0 0 auto;width:clamp(124px,17vw,200px);display:grid;gap:10px;background:none;border:0;padding:0;color:var(--ink);font:inherit;text-align:left;cursor:inherit}
+.book-tab .cv{display:block;aspect-ratio:2/3;border-radius:3px 6px 6px 3px;background-size:cover;background-position:center;box-shadow:0 14px 26px rgba(0,0,0,.45),inset 4px 0 0 rgba(0,0,0,.22);outline:2px solid transparent;outline-offset:4px;transition:transform .25s,outline-color .25s;pointer-events:none}
+.book-tab:hover .cv{transform:translateY(-4px)}
+.book-tab[aria-selected="true"] .cv{outline-color:var(--accent)}
+.book-tab .t{font-size:13.5px;font-weight:600;line-height:1.3;pointer-events:none}
+.book-tab .a{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:2px}
+.viewer{background:var(--stage);border-radius:14px;padding:clamp(14px,2.5vw,28px);position:relative}
+.viewer-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 16px;margin-bottom:16px}
+.viewer-bar .spec b{color:var(--ink);font-weight:500}
+.stage-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(8px,2vw,24px)}
+.navbtn{position:relative;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);display:grid;place-items:center;cursor:pointer;transition:background .15s,color .15s}
+.navbtn:hover{background:var(--accent);color:var(--accent-ink)}
+.navbtn:disabled{opacity:.3;cursor:default;background:var(--surface);color:var(--accent)}
+.navbtn svg{width:20px;height:20px}
+.book-host{min-width:0;display:flex;justify-content:center}
+.book-host>div{margin-inline:auto}
+.book-host{position:relative}
+/* Livro fechado em 3D */
+.closed3d{position:absolute;inset:0;display:grid;place-items:center;background:none;border:0;padding:0;cursor:pointer;perspective:1800px;color:inherit;font:inherit}
+.closed3d[hidden]{display:none}
+.b3wrap{display:grid;justify-items:center;gap:14px}
+.b3{position:relative;width:var(--W);height:var(--H);transform-style:preserve-3d;transform:rotateX(6deg) rotateY(-30deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.closed3d.back .b3{transform:rotateX(6deg) rotateY(210deg)}
+.closed3d:hover .b3,.closed3d:focus-visible .b3{transform:rotateX(4deg) rotateY(-18deg)}
+.closed3d.back:hover .b3,.closed3d.back:focus-visible .b3{transform:rotateX(4deg) rotateY(198deg)}
+.b3>div{position:absolute;backface-visibility:hidden}
+.b3 .fr,.b3 .bk{inset:0;border-radius:2px 5px 5px 2px;overflow:hidden}
+.b3 .fr{transform:translateZ(calc(var(--T)/2))}
+.b3 .fr img{width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.b3 .fr::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.35) 0,rgba(255,255,255,.18) 1.6%,rgba(0,0,0,.12) 3.2%,transparent 7%,transparent 80%,rgba(255,255,255,.08) 100%)}
+.b3 .bk{transform:rotateY(180deg) translateZ(calc(var(--T)/2));display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding:12%;text-align:center;color:var(--ink)}
+.b3 .bk .t{font-family:var(--f-display);font-size:calc(var(--W)*.075);line-height:1.1}
+.b3 .bk .o{width:22%;height:1px;background:var(--accent)}
+.b3 .bk .a{font-size:calc(var(--W)*.035);letter-spacing:.24em;text-transform:uppercase;color:var(--accent-soft)}
+.b3 .sp{width:var(--T);height:100%;left:calc(50% - var(--T)/2);transform:rotateY(-90deg) translateZ(calc(var(--W)/2));background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(255,255,255,.12) 45%,rgba(0,0,0,.35)),var(--c)}
+.b3 .ed{width:var(--T);height:calc(100% - 6px);top:3px;left:calc(50% - var(--T)/2);transform:rotateY(90deg) translateZ(calc(var(--W)/2 - 3px));background:repeating-linear-gradient(90deg,#f4f1ea 0 2px,#d9d4c8 2px 3px);box-shadow:inset 0 0 6px rgba(0,0,0,.25)}
+.b3 .tp,.b3 .bt{height:var(--T);width:calc(100% - 3px);left:0;top:calc(50% - var(--T)/2);background:repeating-linear-gradient(0deg,#f4f1ea 0 2px,#d9d4c8 2px 3px)}
+.b3 .tp{transform:rotateX(90deg) translateZ(calc(var(--H)/2 - 2px))}
+.b3 .bt{transform:rotateX(-90deg) translateZ(calc(var(--H)/2 - 2px))}
+.b3shadow{width:calc(var(--W)*1.05);height:18px;margin-top:-6px;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);filter:blur(2px)}
+.open-chip{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:6px 14px}
+.book-host.is-closed>div:not(.closed3d){visibility:hidden}
+@media (prefers-reduced-motion: reduce){.b3{transition:none}}
+
+.progress{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
+.progress input{width:100%;accent-color:var(--accent)}
+.pg{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hint{margin-top:12px;font-size:13.5px;color:var(--muted);text-align:center}
+.hint .rot{display:none}
+@media (max-width:640px) and (orientation:portrait){.hint .rot{display:inline}}
+.viewer:fullscreen{display:flex;flex-direction:column;justify-content:center;border-radius:0;padding:24px}
+@media (max-width:640px){.stage-row{grid-template-columns:minmax(0,1fr);position:relative}.navbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:40px;height:40px;background:color-mix(in srgb,var(--surface) 85%,transparent);box-shadow:0 4px 14px rgba(0,0,0,.45)}#prevBtn{left:-4px}#nextBtn{right:-4px}.navbtn:disabled{opacity:.25}.viewer{padding:14px 8px;margin-inline:-8px}.viewer-bar{padding-inline:6px}.progress,.hint{padding-inline:6px}}
+
+/* Páginas do livro — sempre papel branco, como o livro impresso */
+.page{background:var(--paper);color:var(--paper-ink);container-type:size;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.page.img-page img{width:100%;height:100%;object-fit:contain;display:block;max-width:none}
+.page.cover-img img{object-fit:cover}
+.pg-in{position:absolute;inset:0;padding:11cqh 13cqw 10cqh;font-family:var(--f-book);font-size:4.3cqw;line-height:1.45;text-align:justify;hyphens:auto}
+.page:nth-child(even) .pg-in{padding-left:15cqw;padding-right:11cqw}
+.run{position:absolute;top:5cqh;left:0;right:0;text-align:center;font-family:var(--f-book);font-size:3.1cqw;letter-spacing:.12em;text-transform:uppercase;color:#777}
+.folio{position:absolute;bottom:4.6cqh;left:0;right:0;text-align:center;font-size:3.3cqw;color:#555;font-family:var(--f-book)}
+.pg-in p+p{text-indent:1.4em}
+.pg-in .noind{text-indent:0}
+.drop::first-letter{float:left;font-size:3.3em;line-height:.82;padding:.06em .08em 0 0;font-weight:600}
+.ch-num{font-size:3.4cqw;letter-spacing:.3em;text-transform:uppercase;text-align:center;color:#777;margin-top:12cqh}
+.ch-title{font-size:9cqw;line-height:1.1;text-align:center;font-weight:400;margin:4cqh 0 10cqh;font-style:italic}
+.epi{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 16cqw;font-family:var(--f-book);font-style:italic;font-size:4.6cqw;line-height:1.5;text-align:center}
+.epi small{display:block;margin-top:4cqh;font-style:normal;font-size:3.4cqw;letter-spacing:.1em}
+.toc{list-style:none;margin:0;padding:0}
+.toc li{display:flex;gap:2cqw;align-items:baseline;margin-bottom:2.6cqh}
+.toc li span:nth-child(2){flex:1;border-bottom:1px dotted #999;transform:translateY(-.3em)}
+.toc-h{font-size:7cqw;text-align:center;margin:6cqh 0 9cqh;font-style:italic}
+.pull{font-size:6cqw;line-height:1.25;font-style:italic;text-align:center;border-block:1px solid #bbb;padding:4cqh 0;margin:6cqh 0}
+.cover{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:13cqh 11cqw 10cqh;color:var(--ink);text-align:center}
+.cover .ct{font-family:var(--f-display);font-size:10.5cqw;line-height:1.05}
+.cover .ca{font-family:var(--f-body);font-size:3.4cqw;letter-spacing:.32em;text-transform:uppercase}
+.cover .cl{font-family:var(--f-mono);font-size:2.8cqw;letter-spacing:.2em;opacity:.75}
+.cover .orn{width:18cqw;height:1px;background:var(--accent);margin:0 auto}
+.cover .cl{color:var(--accent-soft)}
+.blank{position:absolute;inset:0}
+.colophon{position:absolute;left:13cqw;right:13cqw;bottom:12cqh;font-family:var(--f-book);font-size:3.1cqw;line-height:1.5;color:#444;text-align:left}
+
+/* Serviços */
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.svc{padding:28px 24px 8px 0;border-right:1px solid var(--line);display:grid;gap:12px;align-content:start}
+.svc+.svc{padding-left:24px}
+.svc:last-child{border-right:0}
+.svc h3{font-size:28px}
+.svc p{color:var(--muted);font-size:16px}
+.svc ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px}
+.svc li::before{content:"— ";color:var(--accent)}
+@media (max-width:980px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}.svc:nth-child(2){border-right:0}.svc:nth-child(3){padding-left:0}.svc:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:560px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}.svc h3{font-size:22px}.svc p{font-size:14px}}
+
+/* Processo */
+#processo{background:var(--stage);color:var(--ink);border-block:1px solid var(--line)}
+#processo .eyebrow{color:var(--accent)}
+#processo .sec-head p{color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,48px);counter-reset:s}
+.step{align-content:start;border-top:1px solid var(--accent);padding-top:22px;display:grid;gap:10px}
+.step .num{font-family:var(--f-display);font-style:italic;font-size:64px;line-height:1;color:var(--accent)}
+.step h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.3}
+.step p{color:var(--muted);font-size:16px}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:22px}.step{grid-template-columns:auto 1fr;column-gap:16px;align-items:start}.step .num{font-size:44px;grid-row:span 2}.step h3{font-size:18px}.step p{font-size:15px;grid-column:2}}
+
+/* Sobre */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,80px);align-items:center}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:4px;background:
+  repeating-linear-gradient(0deg,transparent 0 27px,color-mix(in srgb,var(--line) 70%,transparent) 27px 28px),var(--surface);border:1px solid var(--line);position:relative;display:grid;place-items:center}
+.portrait{margin:0;overflow:hidden;border:1px solid var(--accent);padding:10px;background:var(--surface)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;border-radius:2px}
+.portrait .mono{font-family:var(--f-display);font-size:clamp(90px,14vw,170px);font-style:italic;color:var(--accent);line-height:1}
+.portrait .cap{position:absolute;left:16px;bottom:14px}
+.about h2{font-size:clamp(34px,4.6vw,54px);margin:10px 0 20px}
+.about .body{display:grid;gap:16px;color:var(--muted);max-width:36em}
+.about .sig{margin-top:24px;font-family:var(--f-display);font-size:24px;color:var(--ink)}
+.about .sig small{display:block;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:820px){.about{grid-template-columns:1fr}.portrait{max-width:360px}}
+
+/* Contato */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(28px,5vw,64px);align-items:center}
+.contact h2{font-size:clamp(38px,5.6vw,72px)}
+.contact h2 em{color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;gap:18px}
+.row{display:grid;gap:4px}
+.row .v{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;user-select:all}
+.row-actions{display:flex;gap:10px;flex-wrap:wrap}
+.copied{font-size:13px;color:var(--accent);min-height:1.2em}
+@media (max-width:820px){.contact{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><b>Calebe</b><span>EDITORIAL</span></a>
+    <nav class="links" aria-label="Seções">
+      <a href="#portfolio">Portfólio</a><a href="#servicos">Serviços</a><a href="#planos">Planos</a><a href="#processo">Como funciona</a><a href="#sobre">Sobre</a>
+    </nav>
+    <a class="btn glow sm" href="#contato">Fale comigo</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="drawhero" aria-labelledby="heroTitle">
+    <div class="drawhero-in wrap">
+      <p class="eyebrow dh-fade">Calebe Editorial</p>
+      <h1 id="heroTitle" class="sr-only">Sua história merece um livro.</h1>
+      <svg class="dh-svg dh-desk" viewBox="0 0 1000 300" role="img" aria-label="Sua história merece um livro.">
+        <defs>
+          <linearGradient id="dhGold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#EAC062"/>
+            <stop offset="50%" stop-color="#FFEDB8"/>
+            <stop offset="100%" stop-color="#F4D47C"/>
+          </linearGradient>
+        </defs>
+        <text class="dh-line" x="500" y="118" text-anchor="middle">Sua história</text>
+        <text class="dh-line dh-it" x="500" y="252" text-anchor="middle">merece um livro.</text>
+      </svg>
+      <svg class="dh-svg dh-mob" viewBox="0 0 600 430" role="img" aria-label="Sua história merece um livro.">
+        <defs>
+          <linearGradient id="dhGoldM" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#EAC062"/>
+            <stop offset="50%" stop-color="#FFEDB8"/>
+            <stop offset="100%" stop-color="#F4D47C"/>
+          </linearGradient>
+        </defs>
+        <text class="dh-line" x="300" y="112" text-anchor="middle" style="fill:url(#dhGoldM);stroke:url(#dhGoldM)">Sua história</text>
+        <text class="dh-line dh-it" x="300" y="246" text-anchor="middle" style="fill:url(#dhGoldM);stroke:url(#dhGoldM)">merece um</text>
+        <text class="dh-line dh-it dh-l3" x="300" y="380" text-anchor="middle" style="fill:url(#dhGoldM);stroke:url(#dhGoldM)">livro.</text>
+      </svg>
+      <p class="dh-sub dh-fade">Revisão · Capa · Diagramação · Publicação</p>
+    </div>
+    <a class="dh-scroll dh-fade" href="#sobre-servico" aria-label="Rolar para baixo"><span>Role</span><i aria-hidden="true"></i></a>
+  </section>
+
+  <section id="sobre-servico" class="band">
+    <div class="wrap band-in">
+      <div class="stat"><div class="n">100+</div><div class="l">autores atendidos</div></div>
+      <div class="ctas">
+        <a class="btn glow" href="#portfolio">Folhear livros</a>
+        <a class="btn glow ghost" href="#contato">Fazer orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="sec-head solo"><p class="eyebrow">Portfólio</p><h2>Folheie os livros.</h2></div>
+
+      <div class="shelf" role="tablist" aria-label="Escolha um livro" id="shelf"></div>
+
+      <div class="viewer glow" id="viewer">
+        <div class="viewer-bar">
+          <p class="spec" id="bookMeta"></p>
+          <button class="btn glow ghost sm" id="fsBtn" type="button">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4"/></svg>
+            Tela cheia</button>
+        </div>
+        <div class="stage-row">
+          <button class="navbtn glow" id="prevBtn" type="button" aria-label="Página anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+          <div class="book-host" id="bookHost"></div>
+          <button class="navbtn glow" id="nextBtn" type="button" aria-label="Próxima página"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4 6 6-6 6"/></svg></button>
+        </div>
+        <div class="progress">
+          <input type="range" id="slider" min="0" max="1" value="0" aria-label="Ir para a página">
+          <span class="pg" id="pgLabel">1 / 1</span>
+        </div>
+        <p class="hint" id="hint">Deslize para virar a página<span class="rot"> · gire o celular para ampliar</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="sec-head solo"><p class="eyebrow">Serviços</p><h2>Do original ao livro.</h2></div>
+      <div class="services">
+        <article class="svc"><h3>Revisão</h3><p>Texto fluido, com a sua voz.</p></article>
+        <article class="svc"><h3>Capa e diagramação</h3><p>Um livro bonito de ler.</p></article>
+        <article class="svc"><h3>Publicação</h3><p>ISBN, ficha, gráfica e e-book.</p></article>
+        <article class="svc"><h3>Audiobook</h3><p>Seu livro também para ouvir.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="planos">
+    <div class="wrap">
+      <div class="sec-head solo"><p class="eyebrow">Planos</p><h2>Escolha o caminho do seu livro.</h2></div>
+      <div class="plans">
+        <article class="plan glow">
+          <p class="eyebrow">Essencial</p>
+          <p class="price"><span>R$</span>899</p>
+          <p class="lim">até 200 páginas</p>
+          <ul><li>Revisão textual</li><li>Diagramação profissional</li><li>Capa profissional</li><li>ISBN, ficha catalográfica e código de barras</li><li>Arquivo para impressão</li><li>E-book Kindle</li><li>1 exemplar impresso</li></ul>
+          <a class="btn glow ghost" href="https://wa.me/5583993999577?text=Ol%C3%A1%2C%20Calebe%21%20Tenho%20interesse%20no%20plano%20Essencial." target="_blank" rel="noopener">Quero este</a>
+        </article>
+        <article class="plan plan-hi glow">
+          <span class="tag">Mais escolhido</span>
+          <p class="eyebrow">Autoridade</p>
+          <p class="price"><span>R$</span>2.497</p>
+          <p class="lim">até 200 páginas</p>
+          <p class="plus">Tudo do Essencial, mais:</p>
+          <ul><li>Publicação na Amazon</li><li>Publicação UICLAP/Clube</li><li>Estratégia de posicionamento do livro</li><li>Kit de divulgação</li><li>Orientação para lançamento</li><li>50 exemplares impressos</li><li>Suporte de 30 dias</li></ul>
+          <a class="btn glow" href="https://wa.me/5583993999577?text=Ol%C3%A1%2C%20Calebe%21%20Tenho%20interesse%20no%20plano%20Autoridade." target="_blank" rel="noopener">Quero este</a>
+        </article>
+        <article class="plan glow">
+          <p class="eyebrow">Pro</p>
+          <p class="price"><span>R$</span>4.997</p>
+          <p class="lim">até 200 páginas</p>
+          <p class="plus">Tudo do Autoridade, mais:</p>
+          <ul><li>Direção editorial</li><li>Desenho completo do lançamento do livro</li><li>Audiobook com IA</li><li>100 exemplares impressos</li><li>Suporte de 60 dias</li></ul>
+          <a class="btn glow ghost" href="https://wa.me/5583993999577?text=Ol%C3%A1%2C%20Calebe%21%20Tenho%20interesse%20no%20plano%20Pro." target="_blank" rel="noopener">Quero este</a>
+        </article>
+      </div>
+      <p class="plans-note">Livros com mais de 200 páginas: consulte.</p>
+    </div>
+  </section>
+
+  <section id="processo">
+    <div class="wrap">
+      <div class="sec-head solo"><p class="eyebrow">Como funciona</p><h2>Três etapas.</h2></div>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><h3>Conversa</h3><p>Conversamos sobre o seu livro, o público que você quer alcançar e o formato ideal. Você me envia o original e recebe a proposta com prazos e o plano mais adequado.</p></div>
+        <div class="step"><span class="num">2</span><h3>Produção</h3><p>O texto é revisado, a capa é criada e o miolo é diagramado. Você acompanha tudo e aprova cada etapa antes de seguirmos, sem surpresas no resultado final.</p></div>
+        <div class="step"><span class="num">3</span><h3>Publicação</h3><p>Preparo ISBN, ficha catalográfica e os arquivos de impressão e e-book. Depois, cuidamos da publicação e dos exemplares, conforme o plano escolhido.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="wrap about">
+      <figure class="portrait glow"><img src="calebe.jpg" alt="Calebe Martins, diretor literário"></figure>
+      <div>
+        <p class="eyebrow">Sobre</p>
+        <h2>Ajudo a sua mensagem a virar livro.</h2>
+        <p class="sig">Calebe Martins<small>Diretor literário</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="wrap contact-min">
+      <p class="eyebrow">Contato</p>
+      <h2>Vamos tirar o seu livro <em>da gaveta?</em></h2>
+      <div class="ctas">
+        <a class="btn glow" href="https://wa.me/5583993999577?text=Ol%C3%A1%2C%20Calebe!%20Quero%20conversar%20sobre%20meu%20livro." target="_blank" rel="noopener">WhatsApp · (83) 99399-9577</a>
+        <a class="btn glow ghost" href="https://www.instagram.com/calebeliterario/" target="_blank" rel="noopener">@calebeliterario</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>Calebe Editorial · Histórias cuidadas. Livros que ficam.</span><span>© 2026 Calebe Martins</span></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+/* ============================================================
+   LIVROS DO PORTFÓLIO
+   Para adicionar um livro real: preencha "pages" com as imagens
+   das páginas, em ordem (capa, miolo..., contracapa), ex.:
+   pages: ["tesouro-p001.jpg", "tesouro-p002.jpg", ...]
+   Livros sem páginas aparecem como "miolo em breve".
+   ============================================================ */
+const BOOKS = [
+  { id:"avinu", title:"Avinu — Pai Nosso", author:"Milton Rodrigues", genre:"Fé e reflexão", color:"#5B3F1C",
+    size:"16 × 23 cm", w:454, h:652, cover:"avinu-capa.jpg",
+    pages:["024","025","026","027","028","029","030","031","032","033"].map(n=>`avinu-p${n}.jpg`) },
+  { id:"empregabilidade", title:"Empregabilidade Infinita", author:"Milton Rodrigues", genre:"Carreira", color:"#0E1A2E",
+    size:"16 × 23 cm", w:454, h:652, cover:"empregabilidade-capa.jpg",
+    pages:["018","019","020","021","022","023","024","025","026","027"].map(n=>`empregabilidade-p${n}.jpg`) },
+  { id:"desistir", title:"Quando tudo em você quer desistir", author:"Milton Rodrigues", genre:"Espiritualidade", color:"#12303A",
+    size:"16 × 23 cm", w:454, h:652, cover:"desistir-capa.jpg",
+    pages:["018","019","020","021","022","023","024","025","026","027"].map(n=>`desistir-p${n}.jpg`) },
+  { id:"segunda-chance", title:"A Segunda Chance", author:"Rubens Santos do Nascimento", genre:"Espiritualidade", color:"#241A12",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"segunda-chance-capa.jpg",
+    pages:["010","011","012","013","014","015","016","017","018","019"].map(n=>`segunda-chance-p${n}.jpg`) },
+  { id:"tesouro", title:"O Tesouro que Ninguém Conseguia Ver", author:"Jerry Cariacica", genre:"Literatura infantil", color:"#1E2B5A",
+    size:"14 × 21 cm", w:397, h:595, cover:"tesouro-capa.jpg",
+    pages:["016","017","018","019","020","021","022","023","024","025"].map(n=>`tesouro-p${n}.jpg`) },
+  { id:"retorno", title:"O Retorno de Cristo e a Salvação Urgente", author:"João Andrade", genre:"Fé", color:"#3A220F",
+    size:"14 × 21 cm", w:397, h:595, cover:"retorno-capa.jpg",
+    pages:[null].concat(["009","010","011","012","013","014","015","016","017","018"].map(n=>`retorno-p${n}.jpg`)) },
+  { id:"esmeralda", title:"A Esmeralda que Eu te Dei", author:"Léliton Souza da Silva Andrade", genre:"Desenvolvimento pessoal", color:"#173D24",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"esmeralda-capa.jpg",
+    pages:[null].concat(["008","009","010","011","012","013","014","015","016","017"].map(n=>`esmeralda-p${n}.jpg`)) },
+  { id:"mulher40", title:"Mulher 40+", author:"Edwar Santos Santana", genre:"Saúde", color:"#6E1A1E",
+    size:"14 × 21 cm", w:397, h:595, cover:"mulher40-capa.jpg",
+    pages:[null].concat(["009","010","011","012","013","014","015","016","017","018"].map(n=>`mulher40-p${n}.jpg`)) },
+  { id:"nele", title:"Nele: poemas sobre o eterno e o humano", author:"Nídia Limeira", genre:"Poesia", color:"#2A1A0E",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"nele-capa.jpg",
+    pages:["008","009","010","011","012","013","014","015","016","017"].map(n=>`nele-p${n}.jpg`) },
+  { id:"consciencia", title:"A Consciência e o Ser", author:"Roni Martins", genre:"Filosofia", color:"#0B3A6E",
+    size:"14 × 21 cm", w:397, h:595, cover:"consciencia-capa.jpg",
+    pages:["020","021","022","023","024","025","026","027","028","029"].map(n=>`consciencia-p${n}.jpg?v=2`) },
+  { id:"inicio", title:"O Início de uma Grande História", author:"Luiz Paulo O. da Costa", genre:"Memória", color:"#5A1418",
+    size:"18,2 × 25,7 cm", w:516, h:729, cover:"inicio-capa.jpg",
+    pages:[null].concat(["007","008","009","010","011","012","013","014","015","016"].map(n=>`inicio-p${n}.jpg`)) },
+  { id:"amostra", title:"Da página em branco ao livro", author:"Amostra de diagramação", color:"#24304F",
+    size:"14,8 × 21 cm", note:"amostra", demo:true },
+];
+
+/* Miolo de demonstração (texto original, só para mostrar a diagramação) */
+function demoPages(b){
+  const run = (t)=>`<div class="run">${t}</div>`;
+  const folio = (n)=>`<div class="folio">${n}</div>`;
+  const P = [];
+  P.push(`<div class="cover" style="background:${b.color}"><div class="cl">CALEBE EDITORIAL</div><div><div class="ct">Da página em branco ao livro</div><div class="orn" style="margin-top:6cqh"></div></div><div class="ca">Amostra de diagramação</div></div>`);
+  P.push(`<div class="blank"></div>`);
+  P.push(`<div class="pg-in" style="text-align:center"><div style="margin-top:22cqh;font-size:8cqw;font-style:italic;line-height:1.15">Da página em branco<br>ao livro</div><div style="margin-top:6cqh;font-size:3.4cqw;letter-spacing:.3em">AMOSTRA</div><div style="position:absolute;bottom:12cqh;left:0;right:0;font-size:3.2cqw;letter-spacing:.24em">CALEBE EDITORIAL</div></div>`);
+  P.push(`<div class="colophon">Este é um miolo de demonstração criado para mostrar o projeto gráfico: formato 14,8 × 21 cm, texto em Crimson Pro, margens espelhadas, cabeço e fólio centralizados.<br><br>Diagramação: Calebe Editorial</div>`);
+  P.push(`<div class="epi">“Um livro é feito duas vezes: quando é escrito e quando ganha a forma que vai chegar às mãos de quem lê.”<small>— nota do editor</small></div>`);
+  P.push(`<div class="pg-in"><div class="toc-h">Sumário</div><ul class="toc"><li><span>I. O original</span><span></span><span>9</span></li><li><span>II. A revisão</span><span></span><span>13</span></li><li><span>III. O projeto gráfico</span><span></span><span>17</span></li><li><span>IV. A capa</span><span></span><span>23</span></li><li><span>V. O livro no mundo</span><span></span><span>29</span></li></ul></div>`);
+  P.push(`<div class="blank"></div>`);
+  P.push(`<div class="pg-in"><div class="ch-num">Capítulo I</div><div class="ch-title">O original</div><p class="noind drop">Todo livro começa como um arquivo esquecido numa pasta, um caderno guardado na gaveta ou uma ideia repetida tantas vezes que já parece pronta. O primeiro passo é ler esse material com atenção e entender o que ele quer ser.</p><p>É nessa leitura que se definem o público, o tom e o formato.</p></div>${folio(9)}`);
+  P.push(`${run("Da página em branco ao livro")}<div class="pg-in"><p class="noind">Um livro de reflexão pede respiro: margens generosas, entrelinha confortável, capítulos que começam em página ímpar. Uma obra infantil pede ilustração e texto conversando na mesma página. Cada escolha nasce do conteúdo.</p><p>Antes de qualquer ajuste, o autor precisa se reconhecer no próprio texto. Por isso a primeira conversa é sobre objetivos, e não sobre fontes ou cores.</p><p>Só depois disso o trabalho técnico começa.</p></div>${folio(10)}`);
+  P.push(`${run("O original")}<div class="pg-in"><p class="noind">Organizar o original significa padronizar títulos, conferir a ordem dos capítulos e separar o que é texto corrido do que é citação, nota ou destaque. Esse mapa evita surpresas na diagramação.</p><div class="pull">“O leitor não vê a diagramação. Ele sente quando ela está certa.”</div><p class="noind">Com o texto organizado, o livro está pronto para a revisão.</p></div>${folio(11)}`);
+  P.push(`${run("Da página em branco ao livro")}<div class="pg-in"><p class="noind">A revisão cuida da gramática, da pontuação e da clareza, sempre preservando a voz de quem escreveu. Um bom revisor corrige o necessário e respeita o resto.</p><p>Depois vem o projeto gráfico: formato, tipografia, mancha de texto, cabeços e fólios. São detalhes que o leitor raramente nota, mas que fazem a leitura fluir sem esforço.</p><p>E então, a capa.</p></div>${folio(12)}`);
+  P.push(`<div class="epi" style="font-size:4cqw">Fim da amostra.<small>Seu livro pode ser o próximo.</small></div>`);
+  P.push(`<div class="cover" style="background:${b.color};justify-content:center"><div><div class="orn"></div><div class="cl" style="margin:5cqh 0">CALEBE EDITORIAL</div><div class="orn"></div></div></div>`);
+  return P.map((h,i)=>`<div class="page"${(i===0||i===P.length-1)?' data-density="hard"':''}>${h}</div>`);
+}
+function comingSoonPages(b){
+  return [
+    `<div class="page" data-density="hard"><div class="cover" style="background:${b.color}"><div class="cl">${b.genre.toUpperCase()}</div><div class="ct" style="font-size:9cqw">${b.title}</div><div class="ca">${b.author}</div></div></div>`,
+    `<div class="page"><div class="epi" style="font-size:4.2cqw">O miolo deste livro<br>chega em breve.<small>Enquanto isso, folheie a amostra.</small></div></div>`,
+  ];
+}
+function imagePages(b,single){
+  const out=[];
+  if(b.cover) out.push(`<div class="page img-page cover-img" data-density="hard"><img src="${b.cover}" alt="Capa de ${b.title}" draggable="false"></div>`);
+  b.pages.filter(src=>!(single&&src===null)).forEach((src,i)=>out.push(src===null?`<div class="page"><div class="blank"></div></div>`:`<div class="page img-page"><img src="${src}" alt="${b.title}, trecho do miolo" loading="${i<4?'eager':'lazy'}" draggable="false"></div>`));
+  if(b.cover){
+    if(!single && out.length%2===0) out.push(`<div class="page"><div class="epi" style="font-size:4cqw">Fim do trecho.<small>Diagramação: Calebe Editorial</small></div></div>`);
+    if(b.back) out.push(`<div class="page img-page cover-img" data-density="hard"><img src="${b.back}" alt="Contracapa de ${b.title}" draggable="false"></div>`); else out.push(`<div class="page" data-density="hard"><div class="cover" style="background:${b.color};justify-content:center"><div><div class="ct" style="font-size:7cqw">${b.title}</div><div class="orn" style="margin:5cqh auto"></div><div class="ca">${b.author}</div></div></div></div>`);
+  }
+  return out;
+}
+
+const host=document.getElementById('bookHost'), slider=document.getElementById('slider'),
+      pgLabel=document.getElementById('pgLabel'), prevBtn=document.getElementById('prevBtn'),
+      nextBtn=document.getElementById('nextBtn'), meta=document.getElementById('bookMeta'),
+      shelf=document.getElementById('shelf'), hint=document.getElementById('hint');
+let pf=null, current=null;
+
+function ready(b){return b.demo || (b.pages && b.pages.length);}
+const SHELF=BOOKS.filter(b=>!b.demo);
+const track=document.createElement('div'); track.className='shelf-track'; shelf.appendChild(track);
+const mkTab=(b,clone)=>{
+  const t=document.createElement('button');
+  t.type='button'; t.className='book-tab'; t.dataset.id=b.id;
+  if(clone){ t.tabIndex=-1; t.setAttribute('aria-hidden','true'); } else t.setAttribute('role','tab');
+  t.innerHTML=`<span class="cv glow" style="background-color:${b.color}${b.cover?`;background-image:url('${b.cover}')`:''}"></span><span class="t">${b.title}<span class="a">${b.author}</span></span>`;
+  t.addEventListener('click',e=>{ if(shelfMoved){ e.preventDefault(); return; } openBook(b.id); document.getElementById('viewer').scrollIntoView({behavior:'smooth',block:'center'}); });
+  track.appendChild(t);
+};
+SHELF.forEach(b=>mkTab(b,false)); SHELF.forEach(b=>mkTab(b,true)); SHELF.forEach(b=>mkTab(b,true));
+let shelfX=0, shelfPaused=false, shelfMoved=false, resumeT=0, half=0;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const measure=()=>{ half=track.scrollWidth/3; };
+const wrapX=()=>{ if(!half) return; while(shelfX<=-half) shelfX+=half; while(shelfX>0) shelfX-=half; };
+let lastT=performance.now();
+(function loop(now){
+  const dt=Math.min(50,now-lastT); lastT=now;
+  if(!shelfPaused && !reduce) shelfX-=dt*0.04025;
+  wrapX(); track.style.transform=`translate3d(${shelfX}px,0,0)`;
+  requestAnimationFrame(loop);
+})(lastT);
+measure(); window.addEventListener('resize',measure); window.addEventListener('load',measure);
+const pause=()=>{ shelfPaused=true; clearTimeout(resumeT); };
+const resumeLater=(ms)=>{ clearTimeout(resumeT); resumeT=setTimeout(()=>{ shelfPaused=false; },ms); };
+let dragId=null, startX=0, baseX=0;
+shelf.addEventListener('pointerdown',e=>{ dragId=e.pointerId; startX=e.clientX; baseX=shelfX; shelfMoved=false; pause(); });
+window.addEventListener('pointermove',e=>{ if(dragId!==e.pointerId) return; const dx=e.clientX-startX;
+  if(Math.abs(dx)>6){ shelfMoved=true; shelf.classList.add('dragging'); }
+  if(shelfMoved){ shelfX=baseX+dx; } });
+const endDrag=e=>{ if(dragId!==e.pointerId) return; dragId=null; shelf.classList.remove('dragging'); resumeLater(1800); setTimeout(()=>{shelfMoved=false},0); };
+window.addEventListener('pointerup',endDrag); window.addEventListener('pointercancel',endDrag);
+shelf.addEventListener('mouseenter',pause); shelf.addEventListener('mouseleave',()=>{ if(dragId===null) resumeLater(400); });
+shelf.addEventListener('focusin',pause); shelf.addEventListener('focusout',()=>resumeLater(800));
+
+
+let closedEl=null;
+function build3d(b){
+  closedEl=document.createElement('div');
+  closedEl.className='closed3d'; closedEl.setAttribute('role','button'); closedEl.tabIndex=0;
+  closedEl.setAttribute('aria-label',`Abrir o livro ${b.title}`);
+  const front = b.cover ? `<img src="${b.cover}" alt="" draggable="false">`
+    : `<div class="cover" style="background:${b.color}"><div class="cl">CALEBE EDITORIAL</div><div class="ct">${b.title}</div><div class="ca">${b.author}</div></div>`;
+  closedEl.innerHTML=`<div class="b3wrap"><div class="b3" style="--c:${b.color}">
+      <div class="fr">${front}</div>
+      ${b.back?`<div class="bk" style="background:${b.color};padding:0"><img src="${b.back}" alt="" draggable="false" style="width:100%;height:100%;object-fit:cover;display:block;max-width:none"></div>`:`<div class="bk" style="background:${b.color}"><div class="t">${b.title}</div><div class="o"></div><div class="a">${b.author}</div></div>`}
+      <div class="sp"></div><div class="ed"></div><div class="tp"></div><div class="bt"></div>
+    </div><div class="b3shadow"></div><span class="open-chip">Toque para abrir</span></div>`;
+  host.appendChild(closedEl);
+  const act=()=>{ if(!pf) return; const last=pf.getPageCount()-1;
+    hideClosed(); if(pf.getCurrentPageIndex()>=last) pf.flipPrev(); else pf.flipNext(); };
+  closedEl.addEventListener('click',act);
+  closedEl.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); act(); } });
+  let sx=null;
+  closedEl.addEventListener('touchstart',e=>{ sx=e.touches[0].clientX },{passive:true});
+  closedEl.addEventListener('touchend',e=>{ if(sx===null) return; const dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>30){ e.preventDefault(); act(); } });
+  size3d();
+}
+function size3d(){
+  if(!closedEl||!pf) return;
+  const par=host.querySelector('.stf__parent'); if(!par) return;
+  const r=par.getBoundingClientRect();
+  const H=Math.max(80,(r.height-58)*0.96), W=H*(current.w&&current.h ? current.w/current.h : 0.707), T=Math.max(10,W*0.09);
+  const b3=closedEl.querySelector('.b3');
+  b3.style.setProperty('--W',W+'px'); b3.style.setProperty('--H',H+'px'); b3.style.setProperty('--T',T+'px');
+  closedEl.querySelector('.b3shadow').style.setProperty('--W',W+'px');
+}
+function showClosed(back){ if(!closedEl) return; size3d(); closedEl.classList.toggle('back',!!back); closedEl.hidden=false; host.classList.add('is-closed');
+  closedEl.querySelector('.open-chip').textContent = back ? 'Toque para voltar' : 'Toque para abrir'; }
+function hideClosed(){ if(!closedEl) return; closedEl.hidden=true; host.classList.remove('is-closed'); }
+window.addEventListener('resize',()=>setTimeout(size3d,60));
+
+function updateUI(){
+  if(!pf) return;
+  const n=pf.getPageCount(), i=pf.getCurrentPageIndex();
+  if(i===0) showClosed(false); else if(i>=n-1) showClosed(true); else hideClosed();
+  const land=pf.getOrientation()==='landscape';
+  slider.max=Math.max(0,n-1); slider.value=i;
+  let label;
+  if(land && i>0 && i<n-1){ label=`${i+1}–${Math.min(i+2,n)} / ${n}` } else label=`${i+1} / ${n}`;
+  pgLabel.textContent=label;
+  prevBtn.disabled=i<=0;
+  nextBtn.disabled=land ? (i>=n-1 || (i>0 && i+2>=n)) : i>=n-1;
+}
+
+function openBook(id, single){
+  single = false; // sempre livro aberto (2 páginas), também no celular
+  const b=BOOKS.find(x=>x.id===id); if(!b) return;
+  current=b;
+  shelf.querySelectorAll('.book-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.id===id));
+  meta.innerHTML=`<b>${b.title}</b> · ${b.author}`;
+  if(pf){ try{pf.destroy()}catch(e){} pf=null; }
+  host.innerHTML='';
+  const el=document.createElement('div'); host.appendChild(el);
+  const html = b.demo ? demoPages(b) : (b.pages&&b.pages.length ? imagePages(b,single) : comingSoonPages(b));
+  el.innerHTML=html.join('');
+  if(!window.St){ hint.textContent='Não foi possível carregar o folheador. Recarregue a página.'; return; }
+  const square = /20 × 20/.test(b.size);
+  const W = b.w ? 420 : (square?440:420), H = b.w ? Math.round(420*b.h/b.w) : (square?440:595);
+  pf=new St.PageFlip(el,{
+    width: W, height: H, size:'stretch',
+    minWidth:90, maxWidth:620, minHeight:130, maxHeight:880,
+    showCover:true, usePortrait:false, maxShadowOpacity:.45,
+    mobileScrollSupport:true, flippingTime:800, autoSize:true, drawShadow:true
+  });
+  pf.loadFromHTML(el.querySelectorAll('.page'));
+  build3d(b);
+  pf.on('flip',updateUI); pf.on('init',updateUI);
+  pf.on('changeOrientation',updateUI);
+  updateUI();
+}
+
+prevBtn.addEventListener('click',()=>{ if(!pf) return; hideClosed(); pf.flipPrev(); });
+nextBtn.addEventListener('click',()=>{ if(!pf) return; hideClosed(); pf.flipNext(); });
+slider.addEventListener('input',()=>{ if(pf){ pf.turnToPage(+slider.value); updateUI(); } });
+document.addEventListener('keydown',e=>{
+  if(!pf) return;
+  const r=document.getElementById('viewer').getBoundingClientRect();
+  if(r.bottom<0||r.top>innerHeight) return;
+  if(e.key==='ArrowRight'){hideClosed();pf.flipNext()} else if(e.key==='ArrowLeft'){hideClosed();pf.flipPrev()}
+});
+document.getElementById('fsBtn').addEventListener('click',()=>{
+  const v=document.getElementById('viewer');
+  try{
+    const p = document.fullscreenElement ? document.exitFullscreen() : v.requestFullscreen && v.requestFullscreen();
+    if(p&&p.catch) p.catch(()=>{});
+  }catch(e){}
+});
+document.addEventListener('fullscreenchange',()=>{ if(current) openBook(current.id) });
+
+
+
+
+/* Hero: desenha o título em traço dourado depois que a fonte carrega */
+(function(){
+  const hero=document.querySelector('.drawhero'); if(!hero) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  hero.classList.add('is-drawing');
+})();
+
+/* Spotlight: posição do cursor relativa a cada elemento com .glow */
+(function(){
+  if(!matchMedia('(hover:hover)').matches) return;
+  let px=-9999, py=-9999, queued=false;
+  const run=()=>{ queued=false;
+    document.querySelectorAll('.glow').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      const dx=Math.max(r.left-px,0,px-r.right), dy=Math.max(r.top-py,0,py-r.bottom);
+      if(dx>180||dy>180){ if(el.style.getPropertyValue('--go')!=='0') el.style.setProperty('--go','0'); return; }
+      el.style.setProperty('--gx',(px-r.left).toFixed(1)+'px'); el.style.setProperty('--gy',(py-r.top).toFixed(1)+'px'); el.style.setProperty('--go','1');
+    });
+  };
+  const q=()=>{ if(!queued){ queued=true; requestAnimationFrame(run); } };
+  document.addEventListener('pointermove',e=>{ px=e.clientX; py=e.clientY; q(); },{passive:true});
+  window.addEventListener('scroll',q,{passive:true});
+  document.addEventListener('pointerleave',()=>{ px=py=-9999; q(); });
+})();
+
+openBook(BOOKS[0].id);
+</script>
+</body>
+</html>
