@@ -1,10 +1,17 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Calebe Editorial</title>
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=2">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <meta name="theme-color" content="#020714">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head>
+<body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap">
@@ -507,6 +514,54 @@ const BOOKS = [
   { id:"poder-palavras", title:"O Poder das Palavras", author:"Milton Rodrigues", genre:"Comunicação", color:"#3B3226",
     size:"16 × 23 cm", w:454, h:652, cover:"livros/poder-palavras/capa.jpeg",
     pages:["010","011","012","013","024","025","026","027","076","077","078","079"].map(n=>`livros/poder-palavras/p${n}.jpg`) },
+  { id:"ensina-nos", title:"Ensina-nos a Contar os Dias", author:"Milton Rodrigues", genre:"Fé e reflexão", color:"#0E1A33",
+    size:"16 × 23 cm", w:454, h:652, cover:"ensina-nos-capa.jpg",
+    pages:["020","021","022","023","046","047","048","049","078","079","080","081"].map(n=>`ensina-nos-p${n}.jpg`) },
+  { id:"talent", title:"Manual de Talent Acquisition", author:"Milton Rodrigues", genre:"Carreira", color:"#13294B",
+    size:"16 × 23 cm", w:454, h:652, cover:"talent-capa.jpg",
+    pages:["014","015","016","017","018","019","054","055","056","057","058","059"].map(n=>`talent-p${n}.jpg`) },
+  { id:"geracoes", title:"Gerações no Mercado de Trabalho", author:"Milton Rodrigues", genre:"Carreira", color:"#1A2340",
+    size:"15 × 22 cm", w:425, h:624, cover:"geracoes-capa.jpg",
+    pages:["016","017","018","019","046","047","048","049","068","069","070","071"].map(n=>`geracoes-p${n}.jpg`) },
+  { id:"engraxate", title:"Engraxate Visionário", author:"Amaurildo Fonseca Santos", genre:"Biografia", color:"#2A1A0C",
+    size:"16 × 23 cm", w:459, h:649, cover:"engraxate-capa.jpg",
+    pages:["022","023","024","025","048","049","050","051","088","089","090","091"].map(n=>`engraxate-p${n}.jpg`) },
+  { id:"entre-mundos", title:"Entre Dois Mundos", author:"Ana Santos", genre:"Espiritualidade", color:"#0B1430",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"entre-mundos-capa.jpg",
+    pages:["006","007","008","009","022","023","026","027","032","033","052","053"].map(n=>`entre-mundos-p${n}.jpg`) },
+  { id:"tenda", title:"A Tenda e a Glória", author:"Benedito Claudio da Silva", genre:"Fé", color:"#7A2A12",
+    size:"14 × 21 cm", w:397, h:595, cover:"tenda-capa.jpg",
+    pages:["010","011","012","013","018","019","020","021","022","023","024","025"].map(n=>`tenda-p${n}.jpg`) },
+  { id:"reflexoes", title:"Reflexões de um Longo Caminhar", author:"Carlos Rangel Júnior", genre:"Desenvolvimento pessoal", color:"#141210",
+    size:"14 × 21 cm", w:397, h:595, cover:"reflexoes-capa.jpg",
+    pages:["008","009","010","011","028","029","030","031","034","035","036","037"].map(n=>`reflexoes-p${n}.jpg`) },
+  { id:"matrizes", title:"Matrizes Psico-Homeopáticas", author:"Célia Franz", genre:"Psicologia", color:"#141A45",
+    size:"16 × 23 cm", w:459, h:649, cover:"matrizes-capa.jpg",
+    pages:["010","011","012","013","022","023","024","025","072","073","074","075"].map(n=>`matrizes-p${n}.jpg`) },
+  { id:"autismo", title:"Autismo: Meu Anjo Azul", author:"Fabio Silva", genre:"Família", color:"#1E3FC4",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"autismo-capa.jpg",
+    pages:["016","017","018","019","024","025","026","027","054","055","056","057"].map(n=>`autismo-p${n}.jpg`) },
+  { id:"diaspora", title:"Diáspora", author:"Gad Adler", genre:"Memória", color:"#1D3020",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"diaspora-capa.jpg",
+    pages:["006","007","008","009","016","017","018","019","030","031","032","033"].map(n=>`diaspora-p${n}.jpg`) },
+  { id:"servos", title:"Quando os Servos Montam e os Príncipes Caminham", author:"Pr. Gilson Souza", genre:"Liderança cristã", color:"#2B1D0C",
+    size:"14 × 21 cm", w:397, h:595, cover:"servos-capa.jpg",
+    pages:["010","011","012","013","018","019","020","021","030","031","032","033"].map(n=>`servos-p${n}.jpg`) },
+  { id:"forca-emocional", title:"A Força Emocional de uma Mulher de Deus", author:"Gislaine Cordeiro Costa", genre:"Fé", color:"#2A0E12",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"forca-emocional-capa.jpg",
+    pages:["004","005","006","007","010","011","012","013","018","019","020","021"].map(n=>`forca-emocional-p${n}.jpg`) },
+  { id:"licoes", title:"Lições que a Vida nos Ensina", author:"Graziele Caetano", genre:"Crônicas", color:"#8A5A2B",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"licoes-capa.jpg",
+    pages:["010","011","012","013","014","015","016","017","024","025","026","027"].map(n=>`licoes-p${n}.jpg`) },
+  { id:"growthland", title:"Universo Growthland", author:"Guillermo Lossio", genre:"Educação", color:"#2E2A6E",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"growthland-capa.jpg",
+    pages:["012","013","014","015","018","019","020","021","028","029","030","031"].map(n=>`growthland-p${n}.jpg`) },
+  { id:"autorreflexao", title:"O Poder da Autorreflexão Diária", author:"Ilton Clever", genre:"Desenvolvimento pessoal", color:"#3A4A63",
+    size:"14,8 × 21 cm", w:420, h:595, cover:"autorreflexao-capa.jpg",
+    pages:["010","011","012","013","018","019","020","021","030","031","032","033"].map(n=>`autorreflexao-p${n}.jpg`) },
+  { id:"cambridge", title:"Sob as Luzes de Cambridge", author:"Jéssica Castro", genre:"Romance", color:"#1A1410",
+    size:"15,5 × 23 cm", w:439, h:652, cover:"cambridge-capa.jpg",
+    pages:["008","009","010","011","014","015","016","017","020","021","022","023"].map(n=>`cambridge-p${n}.jpg`) },
   { id:"amostra", title:"Da página em branco ao livro", author:"Amostra de diagramação", color:"#24304F",
     size:"14,8 × 21 cm", note:"amostra", demo:true },
 ];
