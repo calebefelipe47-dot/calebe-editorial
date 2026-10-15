@@ -1,15 +1,14 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Calebe Editorial — revisão, capa, diagramação e publicação de livros.">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Calebe Editorial</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#020714">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
-html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Layout: gráfica de livro — marcas de corte, especificações técnicas em mono, o livro aberto como peça central */
 :root{
   /* identidade única: azul bem escuro com detalhes dourados */
@@ -298,8 +297,6 @@ section{padding-block:clamp(64px,9vw,112px)}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 </style>
-</head>
-<body>
 
 <header class="top">
   <div class="wrap">
@@ -467,43 +464,49 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
    LIVROS DO PORTFÓLIO
    Para adicionar um livro real: preencha "pages" com as imagens
    das páginas, em ordem (capa, miolo..., contracapa), ex.:
-   pages: ["tesouro-p001.jpg", "tesouro-p002.jpg", ...]
+   pages: ["livros/tesouro/p001.jpg", "livros/tesouro/p002.jpg", ...]
    Livros sem páginas aparecem como "miolo em breve".
    ============================================================ */
 const BOOKS = [
   { id:"avinu", title:"Avinu — Pai Nosso", author:"Milton Rodrigues", genre:"Fé e reflexão", color:"#5B3F1C",
-    size:"16 × 23 cm", w:454, h:652, cover:"avinu-capa.jpg",
-    pages:["024","025","026","027","028","029","030","031","032","033"].map(n=>`avinu-p${n}.jpg`) },
+    size:"16 × 23 cm", w:454, h:652, cover:"livros/avinu/capa.jpg",
+    pages:["024","025","026","027","028","029","030","031","032","033"].map(n=>`livros/avinu/p${n}.jpg`) },
   { id:"empregabilidade", title:"Empregabilidade Infinita", author:"Milton Rodrigues", genre:"Carreira", color:"#0E1A2E",
-    size:"16 × 23 cm", w:454, h:652, cover:"empregabilidade-capa.jpg",
-    pages:["018","019","020","021","022","023","024","025","026","027"].map(n=>`empregabilidade-p${n}.jpg`) },
+    size:"16 × 23 cm", w:454, h:652, cover:"livros/empregabilidade/capa.jpg",
+    pages:["018","019","020","021","022","023","024","025","026","027"].map(n=>`livros/empregabilidade/p${n}.jpg`) },
   { id:"desistir", title:"Quando tudo em você quer desistir", author:"Milton Rodrigues", genre:"Espiritualidade", color:"#12303A",
-    size:"16 × 23 cm", w:454, h:652, cover:"desistir-capa.jpg",
-    pages:["018","019","020","021","022","023","024","025","026","027"].map(n=>`desistir-p${n}.jpg`) },
+    size:"16 × 23 cm", w:454, h:652, cover:"livros/desistir/capa.jpg",
+    pages:["018","019","020","021","022","023","024","025","026","027"].map(n=>`livros/desistir/p${n}.jpg`) },
   { id:"segunda-chance", title:"A Segunda Chance", author:"Rubens Santos do Nascimento", genre:"Espiritualidade", color:"#241A12",
-    size:"14,8 × 21 cm", w:420, h:595, cover:"segunda-chance-capa.jpg",
-    pages:["010","011","012","013","014","015","016","017","018","019"].map(n=>`segunda-chance-p${n}.jpg`) },
+    size:"14,8 × 21 cm", w:420, h:595, cover:"livros/segunda-chance/capa.jpg",
+    pages:["010","011","012","013","014","015","016","017","018","019"].map(n=>`livros/segunda-chance/p${n}.jpg`) },
   { id:"tesouro", title:"O Tesouro que Ninguém Conseguia Ver", author:"Jerry Cariacica", genre:"Literatura infantil", color:"#1E2B5A",
-    size:"14 × 21 cm", w:397, h:595, cover:"tesouro-capa.jpg",
-    pages:["016","017","018","019","020","021","022","023","024","025"].map(n=>`tesouro-p${n}.jpg`) },
+    size:"14 × 21 cm", w:397, h:595, cover:"livros/tesouro/capa.jpg",
+    pages:["016","017","018","019","020","021","022","023","024","025"].map(n=>`livros/tesouro/p${n}.jpg`) },
   { id:"retorno", title:"O Retorno de Cristo e a Salvação Urgente", author:"João Andrade", genre:"Fé", color:"#3A220F",
-    size:"14 × 21 cm", w:397, h:595, cover:"retorno-capa.jpg",
-    pages:[null].concat(["009","010","011","012","013","014","015","016","017","018"].map(n=>`retorno-p${n}.jpg`)) },
+    size:"14 × 21 cm", w:397, h:595, cover:"livros/retorno/capa.jpg",
+    pages:[null].concat(["009","010","011","012","013","014","015","016","017","018"].map(n=>`livros/retorno/p${n}.jpg`)) },
   { id:"esmeralda", title:"A Esmeralda que Eu te Dei", author:"Léliton Souza da Silva Andrade", genre:"Desenvolvimento pessoal", color:"#173D24",
-    size:"14,8 × 21 cm", w:420, h:595, cover:"esmeralda-capa.jpg",
-    pages:[null].concat(["008","009","010","011","012","013","014","015","016","017"].map(n=>`esmeralda-p${n}.jpg`)) },
+    size:"14,8 × 21 cm", w:420, h:595, cover:"livros/esmeralda/capa.jpg",
+    pages:[null].concat(["008","009","010","011","012","013","014","015","016","017"].map(n=>`livros/esmeralda/p${n}.jpg`)) },
   { id:"mulher40", title:"Mulher 40+", author:"Edwar Santos Santana", genre:"Saúde", color:"#6E1A1E",
-    size:"14 × 21 cm", w:397, h:595, cover:"mulher40-capa.jpg",
-    pages:[null].concat(["009","010","011","012","013","014","015","016","017","018"].map(n=>`mulher40-p${n}.jpg`)) },
+    size:"14 × 21 cm", w:397, h:595, cover:"livros/mulher40/capa.jpg",
+    pages:[null].concat(["009","010","011","012","013","014","015","016","017","018"].map(n=>`livros/mulher40/p${n}.jpg`)) },
   { id:"nele", title:"Nele: poemas sobre o eterno e o humano", author:"Nídia Limeira", genre:"Poesia", color:"#2A1A0E",
-    size:"14,8 × 21 cm", w:420, h:595, cover:"nele-capa.jpg",
-    pages:["008","009","010","011","012","013","014","015","016","017"].map(n=>`nele-p${n}.jpg`) },
+    size:"14,8 × 21 cm", w:420, h:595, cover:"livros/nele/capa.jpg",
+    pages:["008","009","010","011","012","013","014","015","016","017"].map(n=>`livros/nele/p${n}.jpg`) },
   { id:"consciencia", title:"A Consciência e o Ser", author:"Roni Martins", genre:"Filosofia", color:"#0B3A6E",
-    size:"14 × 21 cm", w:397, h:595, cover:"consciencia-capa.jpg",
-    pages:["020","021","022","023","024","025","026","027","028","029"].map(n=>`consciencia-p${n}.jpg?v=2`) },
+    size:"14 × 21 cm", w:397, h:595, cover:"livros/consciencia/capa.jpg",
+    pages:["020","021","022","023","024","025","026","027","028","029"].map(n=>`livros/consciencia/p${n}.jpg?v=2`) },
   { id:"inicio", title:"O Início de uma Grande História", author:"Luiz Paulo O. da Costa", genre:"Memória", color:"#5A1418",
-    size:"18,2 × 25,7 cm", w:516, h:729, cover:"inicio-capa.jpg",
-    pages:[null].concat(["007","008","009","010","011","012","013","014","015","016"].map(n=>`inicio-p${n}.jpg`)) },
+    size:"18,2 × 25,7 cm", w:516, h:729, cover:"livros/inicio/capa.jpg",
+    pages:[null].concat(["007","008","009","010","011","012","013","014","015","016"].map(n=>`livros/inicio/p${n}.jpg`)) },
+  { id:"design-thinking", title:"Design Thinking para Carreiras", author:"Milton Rodrigues", genre:"Carreira", color:"#1B2B4A",
+    size:"16 × 23 cm", w:454, h:652, cover:"livros/design-thinking/capa.jpg",
+    pages:["010","011","012","013","054","055","056","057","190","191","192","193"].map(n=>`livros/design-thinking/p${n}.jpg`) },
+  { id:"poder-palavras", title:"O Poder das Palavras", author:"Milton Rodrigues", genre:"Comunicação", color:"#3B3226",
+    size:"16 × 23 cm", w:454, h:652, cover:"livros/poder-palavras/capa.jpg",
+    pages:["010","011","012","013","024","025","026","027","076","077","078","079"].map(n=>`livros/poder-palavras/p${n}.jpg`) },
   { id:"amostra", title:"Da página em branco ao livro", author:"Amostra de diagramação", color:"#24304F",
     size:"14,8 × 21 cm", note:"amostra", demo:true },
 ];
@@ -712,5 +715,5 @@ document.addEventListener('fullscreenchange',()=>{ if(current) openBook(current.
 
 openBook(BOOKS[0].id);
 </script>
-</body>
-</html>
+
+</body></html>
